@@ -1,25 +1,39 @@
 import React from "react";
-import ButtonContainer from "../../Components/Button";
-import InputComponent from "../../Components/Input";
+import "./index.css";
+import { useForm } from "react-hook-form";
 
-
-import Title from "../../Components/Title";
-import { Container, Form } from "./style";
+import { useAuth } from "../../Context/AuthProvider/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage(){
+    const auth = useAuth();
+    const navigate = useNavigate();
 
+    const { register, handleSubmit } = useForm();
+
+    const onSubmit = async (data: any) => {
+        try {
+            await auth.authenticate(data.email, data.password);
+
+            navigate("/profile");
+        } catch (error) {
+            alert("Email ou senha inválidos")
+        }
+    };
 
     return(
-        <Container>
-            <Form>
-                <Title texto="Entrar" />
+        <div className="container">
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <h1 className="title">Entrar</h1>
 
-                <InputComponent description="Insira seu email: " placeholder="Insira seu email" tipo="email"/>
+                <small>Insira seu e-mail: </small>
+                <input type="email" {...register("email")} placeholder="Insira seu e-mail"/>
 
-                <InputComponent description="Insira sua senha:" placeholder="Insira sua senha" tipo="password"/>
+                <small>Insira sua senha: </small>
+                <input type="password" {...register("password")} placeholder="Insira seu e-mail"/>
 
-                <ButtonContainer titulo="Entrar" type="submit"/>
-            </Form>
-        </Container>
+                <button type="submit" >Entrar</button>
+            </form>
+        </div>
     )
 }
