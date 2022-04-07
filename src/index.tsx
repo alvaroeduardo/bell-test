@@ -6,6 +6,7 @@ import { ProtectedLayout } from "./Components/ProtectedLayout";
 import { AuthProvider } from "./Context/AuthProvider";
 
 import LoginPage from './Views/Login';
+import Main from './Views/Main';
 
 const rootElement = document.getElementById('root') as HTMLElement;
 const root = ReactDOM.createRoot(rootElement);
@@ -14,9 +15,9 @@ root.render(
   <AuthProvider>
     <BrowserRouter>
         <Routes>
-          <Route path="/profile" element={
+          <Route path="/" element={
             <ProtectedLayout>
-              <h2>Olá esse é o component Profile!</h2>
+              <Main/>
             </ProtectedLayout>
           }/>
                         
