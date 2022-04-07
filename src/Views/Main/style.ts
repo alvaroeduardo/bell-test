@@ -29,3 +29,63 @@ export const Title = styled.h1`
     width: 100%;
     text-align: center;
 `;
+
+export const Table = styled.table`
+    background: none;
+    border: 2px solid #bdc3c7;
+    border-radius: 10px;
+    padding: 1rem;
+`;
+
+export const THead = styled.thead`
+    background: none;
+    padding: 1rem;
+`;
+
+export const Th = styled.th`
+    background: none;
+    font-size: 14px;
+    padding: .5rem;
+    border-bottom: 2px solid #bdc3c7;
+`;
+
+export const TBody = styled.tbody`
+    background: none;
+    padding: 1rem;
+`
+
+export const Tr = styled.tr`
+    height: auto;
+    text-align: center;
+    padding: .5rem;
+    background: none;
+`;
+
+export const Td = styled.td`
+    background: none;
+    font-size: 12px;
+    padding: 1rem;
+    border-bottom: 1px solid #bdc3c7;
+`;
+
+export const Photo = styled.img`
+    width: 30px;
+    height: 30px;
+`;
+
+export const Form = styled.form`
+    width: 30rem;
+    height: auto;
+    padding: 1.5rem;
+    border-radius: 10px;
+    background-color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+`;
+
+export const Description = styled.small`
+    font-size: 12px;
+    background: none;
+    color: #34495e;
+    margin: 0 0 5px 0;
+`;

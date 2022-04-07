@@ -35,3 +35,18 @@ export async function userView() {
         return null;
     }
 }
+
+export async function savePhoto(data: any) {
+    const config = {
+        headers:{
+            "Content-Type": "multipart/form-data"
+        }
+      };
+    try {
+        const request = await Api.post('/photo/save', {data}, config)
+
+        return request;
+    } catch (error) {
+        return null;
+    }
+}
