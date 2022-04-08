@@ -43,7 +43,22 @@ export async function savePhoto(data: any) {
         }
       };
     try {
-        const request = await Api.post('/photo/save', {data}, config)
+        const request = await Api.post('/photo/save', data, config)
+
+        return request;
+    } catch (error) {
+        return null;
+    }
+}
+
+export async function registerUse(data: any) {
+    const config = {
+        headers:{
+            "Content-Type": "multipart/form-data"
+        }
+      };
+    try {
+        const request = await Api.post('/user/create', data, config)
 
         return request;
     } catch (error) {
