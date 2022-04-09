@@ -51,6 +51,21 @@ export async function savePhoto(data: any) {
     }
 }
 
+export async function updatePhoto(data: any) {
+    const config = {
+        headers:{
+            "Content-Type": "multipart/form-data"
+        }
+      };
+    try {
+        const request = await Api.post('/photo/update', data, config)
+
+        return request;
+    } catch (error) {
+        return null;
+    }
+}
+
 export async function registerUse(data: any) {
     const config = {
         headers:{
@@ -59,6 +74,32 @@ export async function registerUse(data: any) {
       };
     try {
         const request = await Api.post('/user/create', data, config)
+
+        return request;
+    } catch (error) {
+        return null;
+    }
+}
+
+export async function getOneUserView(params: any) {
+    try {
+        const request = await Api.get('/user/view/'+params);
+
+        return request.data.result;
+    } catch (error) {
+        return null;
+    }
+}
+
+export async function updateUser(data: any) {
+    const config = {
+        headers:{
+            "Content-Type": "multipart/form-data",
+            "Access-Control-Allow-Origin": "*"
+        }
+      };
+    try {
+        const request = await Api.post('/user/update', data, config)
 
         return request;
     } catch (error) {

@@ -19,7 +19,7 @@ export const Title = styled.h1`
     background: none;
     font-size: 25px;
     font-weight: bold;
-    color: #2c3e50;
+    color: #8e44ad;
     margin: 0 0 1rem 0;
     width: 100%;
     text-align: center;
@@ -29,13 +29,13 @@ export const Divisoria = styled.div`
     width: 100%;
     height: 2px;
     border-radius: 2px;
-    background-color: #2c3e50;
+    background-color: #8e44ad;
     margin: 1rem 0 1rem 0;
 `;
 
 export const Link = styled.a`
     background: none;
-    color: #2c3e50;
+    color: #8e44ad;
     font-style: none;
     text-decoration: none;
     font-size: 14px;

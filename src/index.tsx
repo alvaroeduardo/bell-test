@@ -7,6 +7,7 @@ import { AuthProvider } from "./Context/AuthProvider";
 
 import LoginPage from './Views/Login';
 import Main from './Views/Main';
+import ProfileView from './Views/Profile';
 
 const rootElement = document.getElementById('root') as HTMLElement;
 const root = ReactDOM.createRoot(rootElement);
@@ -18,6 +19,12 @@ root.render(
           <Route path="/" element={
             <ProtectedLayout>
               <Main/>
+            </ProtectedLayout>
+          }/>
+
+          <Route path="/profile" element={
+            <ProtectedLayout>
+              <ProfileView/>
             </ProtectedLayout>
           }/>
                         

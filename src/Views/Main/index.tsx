@@ -3,13 +3,16 @@ import Modal from 'react-modal';
 import { useForm } from "react-hook-form";
 
 import MenuComponent from "../../Components/Menu";
-import { registerUse, savePhoto, userView } from "../../Context/AuthProvider/util";
-import { Container, ContainerData, Title, Table, THead, Th, Tr, TBody, Td, Photo, Form, Description } from "./style";
+import UserProfile from "../../Image/user-pen-solid.svg";
+import { registerUse, userView } from "../../Context/AuthProvider/util";
+import { Container, ContainerData, Title, Table, THead, Th, Tr, TBody, Td, Photo, Form } from "./style";
+import { Link } from "react-router-dom";
 
 export default function Main(){
     const [data, setData] = useState(['']);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [registerOpen, setRegisterOpen] = useState(false)
+    const [registerOpen, setRegisterOpen] = useState(false);
+
+
     const { register, handleSubmit } = useForm();
 
     const dataUsers = userView();
@@ -30,13 +33,6 @@ export default function Main(){
 
     const response: any = data;   
     
-    function handleOpenModal(){
-        setModalIsOpen(true);
-        
-    }
-    function handleCloseModal(){
-        setModalIsOpen(false);
-    }
 
     function handleRegisterModalOpen(){
         setRegisterOpen(true)
@@ -45,21 +41,6 @@ export default function Main(){
     function handleRegisterModalClose(){
         setRegisterOpen(false)
     }
-
-    const onSubmit = async (data: any) => {
-        const formData = new FormData();
-
-        formData.append("file", data.file[0]);
-        formData.append("user_id", data.user_id);
-
-        try {
-            console.log(formData);
-
-            await savePhoto(formData);
-        } catch (error) {
-            return error;
-        }
-    };
 
     const onSubmitUser = async (data: any) => {
         const formData = new FormData();
@@ -72,10 +53,15 @@ export default function Main(){
             console.log(formData);
 
             await registerUse(formData);
+
         } catch (error) {
             return error;
         }
     };
+
+    function reload(){
+        setTimeout(()=>{window.location.reload()}, 2000 );
+    }
 
     return(
         <Container>
@@ -85,59 +71,53 @@ export default function Main(){
                 <Title>Usuários Cadastrados</Title>
                 <Table>
                     <THead>
-                        <Th>Foto</Th>
-                        <Th>ID</Th>
-                        <Th>Nome</Th>
-                        <Th>Email</Th>
-                        <Th>Telefone</Th>
-                        
+                        <Tr>
+                            <Th>ID</Th>
+                            <Th>Nome</Th>
+                            <Th>Email</Th>
+                            <Th>Telefone</Th>
+                            <Th>Data de Cadastro</Th>
+                            <Th></Th>
+                        </Tr>
                     </THead>
 
                     <TBody>
                         {
                             response.map((d: any)=>{
+                                const link="/profile?id=" + d.id;
 
-                                console.log(d.photo)
                                 return(
                                     <>
-                                    <Tr>
-                                        <Td>{d.photo == null ? <button onClick={()=>handleOpenModal()}>+</button> : <Photo src={d.photo.photo} />}</Td>
-                                        <Td>{d.id}</Td>
-                                        <Td>{d.name}</Td>
-                                        <Td>{d.email}</Td>
-                                        <Td>{d.mobile_phone}</Td>
-                                    </Tr>
-
-                                    <Modal isOpen={modalIsOpen} onRequestClose={handleCloseModal}>
-                                        <form onSubmit={handleSubmit(onSubmit)}>
-
-                                            <input type="text" value={d.id} {...register("user_id")}/>
-
-                                            <input type="file" {...register("file")}/>
-
-                                            <button type="submit" >Enviar</button>
-                                        </form>
-                                    </Modal>
+                                        <Tr>
+                                            <Td>{d.id}</Td>
+                                            <Td>{d.name}</Td>
+                                            <Td>{d.email}</Td>
+                                            <Td>{d.mobile_phone}</Td>
+                                            <Td>{d.created_at}</Td>
+                                            <Td><Link to={link}><Photo src={UserProfile}/></Link></Td>
+                                        </Tr>
                                     </>
-                            )
-                        }) 
+                                )
+                            }) 
                         }
 
                     </TBody>
                 </Table>
 
-                <button onClick={()=>handleRegisterModalOpen()}>Cadastrar novo usuário</button>
+                <button onClick={()=>{handleRegisterModalOpen(); reload()}}>Cadastrar novo usuário</button>
 
-                <Modal isOpen={registerOpen} onRequestClose={handleRegisterModalClose}>
-                    <form onSubmit={handleSubmit(onSubmitUser)}>
+                <Modal isOpen={registerOpen} ariaHideApp={false} onRequestClose={handleRegisterModalClose}>
+                    <Form onSubmit={handleSubmit(onSubmitUser)}>
 
                         <input type="text" placeholder="Insira seu nome" {...register("name")}/>
                         <input type="email" placeholder="Insira seu email" {...register("email")}/>
                         <input type="text" placeholder="Insira seu telefone" {...register("phone")}/>
 
                         <button type="submit" >Enviar</button>
-                    </form>
+                    </Form>
                 </Modal>
+
+
             </ContainerData>
         </Container>
     )

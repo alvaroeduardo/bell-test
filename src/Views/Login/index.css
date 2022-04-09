@@ -8,7 +8,7 @@ input {
     border: 2px solid #7f8c8d;
     border-radius: 5px;
     margin: 0 0 1.5rem 0;
-    color: #2c3e50;
+    color: #8e44ad;
 }
 
 button{
@@ -16,8 +16,8 @@ button{
     height: 4rem;
     font-size: 14px;
     font-weight: bold;
-    border: 2px solid #34495e;
-    background-color: #34495e;
+    border: 2px solid #9b59b6;
+    background-color: #9b59b6;
     color: #ecf0f1;
     border-radius: 5px;
     cursor: pointer;
