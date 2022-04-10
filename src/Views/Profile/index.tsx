@@ -64,7 +64,6 @@ export default function ProfileView(){
         formData.append("user_id", id);
 
         try {
-            console.log(formData);
 
             await updatePhoto(formData);
 
@@ -83,7 +82,6 @@ export default function ProfileView(){
         formData.append("user_id", id);
 
         try {
-            console.log(formData);
 
             await updateUser(formData);
 
@@ -100,7 +98,6 @@ export default function ProfileView(){
         formData.append("user_id", id);
 
         try {
-            console.log(formData);
 
             await savePhoto(formData);
 

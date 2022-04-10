@@ -52,8 +52,6 @@ export default function Main(){
         formData.append("mobile_phone", data.phone);
 
         try {
-            console.log(formData);
-
             await registerUse(formData);
 
         } catch (error) {

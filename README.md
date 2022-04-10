@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+# Bell Test
+Esta aplicação é uma aplicação MVP (mínimo viável produto).
+Link para prototipação do projeto completo: [Figma](https://www.figma.com/proto/DSSjc7SrtR9MudyI6Ettb5/Bell-Test?node-id=1:2&scaling=scale-down&page-id=0:1&starting-point-node-id=1:2)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A refatoração do código é feita após a aprovação do MVP.
 
-## Available Scripts
+### Como iniciar a aplicação?
+1. Para primeira iniciação precisamos clonar o projeto:
 
-In the project directory, you can run:
+    `git clone https://github.com/alvaroeduardo/bell-test.git`
 
-### `npm start`
+2. Após a clonagem do projeto vamos instalar as dependências necessárias utilizando o NPM ou Yarn:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+	`yarn start`
+	`npm install`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+3. Após a instalação das dependências vamos iniciar o projeto na máquina local utilizando o comando:
+	npm start ou yarn start
 
-### `npm test`
+### Como buildar a aplicação para deploy:
+Vamos utilizar o comando:
+	
+	yarn build
+	npm build
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para subirmos a aplicação para um servidor precisamos apenas da pasta "Dist".
 
-### `npm run build`
+## ![robot](https://github.githubassets.com/images/icons/emoji/unicode/1f916.png)  Tecnologias utilizadas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   NodeJS v16.14.0
+-   Yarn v1.22.18
+-   ReactJS v18.0.0
+-   Styled Components v5.3.5
+-   Axios v0.26.1
+-   Typescript v4.6.3
+-   React Hook Form v7.29.0
+-   React Modal v3.14.4
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ![crossed_swords](https://github.githubassets.com/images/icons/emoji/unicode/2694.png)  Desafios
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Pela pouca prática em importações de imagens via Axios, obtive uma certa dificuldade em gerar as imagens para a lista e profile, a requisição ficava me retornando apenas a Promise e não o valor cru;
+2. Por motivos os quais ainda desconheço não consegui fazer a edição de dados via Modal direto da lista pelo qual na importação do ID ele persistia apenas um único valor, sendo assim resolvi criar uma página profile que puxa dados via parâmetros query.
+3.  Responsividade: por mais que não foi solicitado uma prototipagem mobile para a tela, como boas práticas é interessante que a tela seja responsiva. Apresentei dificuldades nesse quesito já que não consegui criar um algorítimo onde fizesse os componentes ficassem responsivos. Isso é um desafio interessante ao futuro, se eu criasse a tela em HTML5, CSS3 e Javascript, esse quesito não seria um problema, o qual acho mais fácil trabalhar, porém como se tratava de um styled components com vários componentes interligados não consegui desenvolver essa parte.
