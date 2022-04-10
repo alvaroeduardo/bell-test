@@ -17,14 +17,6 @@ A refatoração do código é feita após a aprovação do MVP.
 3. Após a instalação das dependências vamos iniciar o projeto na máquina local utilizando o comando:
 	npm start ou yarn start
 
-### Como buildar a aplicação para deploy:
-Vamos utilizar o comando:
-	
-	yarn build
-	npm build
-
-Para subirmos a aplicação para um servidor precisamos apenas da pasta "Dist".
-
 ## ![robot](https://github.githubassets.com/images/icons/emoji/unicode/1f916.png)  Tecnologias utilizadas
 
 -   NodeJS v16.14.0
