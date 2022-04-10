@@ -10,21 +10,23 @@ export const Container = styled.div`
 `;
 
 export const ContainerData = styled.div`
-    width: 78%;
-    height: 95%;
-    padding: 1.5rem;
-    background-color: #ecf0f1;
+    width: 90%;
+    height: 99vh;
+    padding: 1.5rem 1.5rem 1.5rem 12rem;
+    position: fixed;
+    bottom: 0;
+    background-color: #2C3E50;
     border-radius: 10px;
-    margin: 0 0 0 23rem;
+    margin: 0 0 0 10rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 `;
 
 export const Title = styled.h1`
     background: none;
     font-size: 25px;
     font-weight: bold;
-    color: #8e44ad;
+    color: white;
     margin: 0 0 2rem 0;
     width: 100%;
     text-align: center;
@@ -33,7 +35,7 @@ export const Title = styled.h1`
 export const Description = styled.small`
     font-size: 12px;
     background: none;
-    color: #8e44ad;
+    color: white;
     margin: 0 0 5px 0;
 `;
 
@@ -53,6 +55,17 @@ export const Photo = styled.img`
     height: 100px;
     border-radius: 50%;
     border: 3px solid #8e44ad;
+    margin: 1.5rem;
+`;
+
+export const PhotoContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    align-items: center;
+    width: 20%;
+    height: auto;
+    padding: 1rem;
 `;
 
 export const Divisoria = styled.div`
@@ -60,4 +73,12 @@ export const Divisoria = styled.div`
     height: 1px;
     margin: 1rem 0 1rem 0;
     background-color: #7f8c8d;
+`;
+
+export const DataContainer = styled.div`
+    width: 60%;
+    height: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
 `;

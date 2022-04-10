@@ -10,29 +10,29 @@ export const Container = styled.div`
 `;
 
 export const ContainerData = styled.div`
-    width: 78%;
-    height: 95%;
-    padding: 1.5rem;
+    width: 90%;
+    height: 99vh;
+    padding: 1.5rem 1.5rem 1.5rem 12rem;
+    position: fixed;
+    bottom: 0;
     background-color: #ecf0f1;
     border-radius: 10px;
-    margin: 0 0 0 23rem;
+    margin: 0 0 0 10rem;
     display: flex;
     flex-direction: column;
 `;
 
 export const Title = styled.h1`
     background: none;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     color: #8e44ad;
     margin: 0 0 2rem 0;
     width: 100%;
-    text-align: center;
 `;
 
 export const Table = styled.table`
     background: none;
-    border: 2px solid #bdc3c7;
     border-radius: 10px;
     padding: 1rem;
 `;
@@ -65,7 +65,6 @@ export const Td = styled.td`
     background: none;
     font-size: 12px;
     padding: 1rem;
-    border-bottom: 1px solid #bdc3c7;
 `;
 
 export const Photo = styled.img`

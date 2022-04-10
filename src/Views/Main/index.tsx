@@ -12,7 +12,6 @@ export default function Main(){
     const [data, setData] = useState(['']);
     const [registerOpen, setRegisterOpen] = useState(false);
 
-
     const { register, handleSubmit } = useForm();
 
     const dataUsers = userView();
@@ -31,10 +30,7 @@ export default function Main(){
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const response: any = data;   
-
-    
-    
+    const response: any = data;  
 
     function handleRegisterModalOpen(){
         setRegisterOpen(true)
@@ -123,7 +119,7 @@ export default function Main(){
                     </TBody>
                 </Table>
 
-                <button onClick={()=>{handleRegisterModalOpen(); reload()}}>Cadastrar novo usuário</button>
+                <button onClick={()=>{handleRegisterModalOpen()}}>Cadastrar novo usuário</button>
 
                 <Modal isOpen={registerOpen} ariaHideApp={false} onRequestClose={handleRegisterModalClose}>
                     <Form onSubmit={handleSubmit(onSubmitUser)}>
@@ -132,7 +128,7 @@ export default function Main(){
                         <input type="email" placeholder="Insira seu email" {...register("email")}/>
                         <input type="text" placeholder="Insira seu telefone" {...register("phone")}/>
 
-                        <button type="submit" >Enviar</button>
+                        <button type="submit" onClick={()=>reload()}>Enviar</button>
                     </Form>
                 </Modal>
 

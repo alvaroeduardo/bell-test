@@ -11,11 +11,10 @@ export default function MenuComponent(){
     return(
         <Container>
 
-            <Title>Bell Test</Title>
+            <Title>Bt</Title>
 
             <Divisoria/>
             <Link href="/">Página Inicial</Link>
-            <Divisoria/>
 
             <button type="submit" onClick={auth.logout} >Sair</button>
         </Container>
