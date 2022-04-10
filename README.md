@@ -15,7 +15,8 @@ A refatoração do código é feita após a aprovação do MVP.
 	`npm install`
 
 3. Após a instalação das dependências vamos iniciar o projeto na máquina local utilizando o comando:
-	npm start ou yarn start
+	`npm start`
+	`yarn start`
 
 ## ![robot](https://github.githubassets.com/images/icons/emoji/unicode/1f916.png)  Tecnologias utilizadas
 
