@@ -11,7 +11,7 @@ A refatoração do código é feita após a aprovação do MVP.
 
 2. Após a clonagem do projeto vamos instalar as dependências necessárias utilizando o NPM ou Yarn:
 
-	`yarn start`
+	`yarn`
 	`npm install`
 
 3. Após a instalação das dependências vamos iniciar o projeto na máquina local utilizando o comando:
