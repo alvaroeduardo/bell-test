@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import MenuComponent from "../../Components/Menu";
 import UserProfile from "../../Image/user-pen-solid.svg";
 import { registerUse, userView } from "../../Context/AuthProvider/util";
-import { Container, ContainerData, Title, Table, THead, Th, Tr, TBody, Td, Photo, Form } from "./style";
+import { Container, ContainerData, Title, Table, THead, Th, Tr, TBody, Td, Photo, Form, Icon } from "./style";
 import { Link } from "react-router-dom";
 
 export default function Main(){
@@ -32,6 +32,8 @@ export default function Main(){
     }, []);
 
     const response: any = data;   
+
+    
     
 
     function handleRegisterModalOpen(){
@@ -59,6 +61,7 @@ export default function Main(){
         }
     };
 
+
     function reload(){
         setTimeout(()=>{window.location.reload()}, 2000 );
     }
@@ -72,6 +75,7 @@ export default function Main(){
                 <Table>
                     <THead>
                         <Tr>
+                            <Th></Th>
                             <Th>ID</Th>
                             <Th>Nome</Th>
                             <Th>Email</Th>
@@ -85,16 +89,33 @@ export default function Main(){
                         {
                             response.map((d: any)=>{
                                 const link="/profile?id=" + d.id;
+                                const imageUser = d.photo;
+
+                                function photoUser(){
+                                    if(imageUser == null){
+                                        return(
+                                            <>
+                                            </>
+                                        )
+                                    } else {
+                                        return (
+                                            <>
+                                                <Photo src={imageUser.photo} />
+                                            </>
+                                        )
+                                    }
+                                }
 
                                 return(
                                     <>
                                         <Tr>
+                                            <Td>{photoUser()}</Td>
                                             <Td>{d.id}</Td>
                                             <Td>{d.name}</Td>
                                             <Td>{d.email}</Td>
                                             <Td>{d.mobile_phone}</Td>
                                             <Td>{d.created_at}</Td>
-                                            <Td><Link to={link}><Photo src={UserProfile}/></Link></Td>
+                                            <Td><Link to={link}><Icon src={UserProfile}/></Link></Td>
                                         </Tr>
                                     </>
                                 )

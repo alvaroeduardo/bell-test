@@ -106,3 +106,13 @@ export async function updateUser(data: any) {
         return null;
     }
 }
+
+export async function getPhoto(params: any) {
+    try {
+        const request = await Api.get('/photo/view/'+params).then(response => response.data).catch(error => error);
+
+        return request;
+    } catch (error) {
+        return null;
+    }
+}

@@ -54,3 +54,10 @@ export const Photo = styled.img`
     border-radius: 50%;
     border: 3px solid #8e44ad;
 `;
+
+export const Divisoria = styled.div`
+    width: 100%;
+    height: 1px;
+    margin: 1rem 0 1rem 0;
+    background-color: #7f8c8d;
+`;

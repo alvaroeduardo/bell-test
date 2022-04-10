@@ -74,6 +74,12 @@ export const Photo = styled.img`
     border-radius: 50%;
 `;
 
+export const Icon = styled.img`
+    width: 30px;
+    height: 30px;
+    background-color: #ecf0f1;
+`;
+
 export const Form = styled.form`
     width: 100%;
     height: auto;

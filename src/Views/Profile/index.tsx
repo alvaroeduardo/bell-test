@@ -3,8 +3,8 @@ import {useLocation} from "react-router-dom";
 import Modal from 'react-modal';
 
 import MenuComponent from '../../Components/Menu';
-import { updatePhoto, getOneUserView, updateUser } from '../../Context/AuthProvider/util';
-import { Container, ContainerData, Form, Photo, Title } from './style';
+import { updatePhoto, getOneUserView, updateUser, savePhoto } from '../../Context/AuthProvider/util';
+import { Container, ContainerData, Divisoria, Form, Photo, Title } from './style';
 import { useForm } from "react-hook-form";
 
 
@@ -12,8 +12,9 @@ export default function ProfileView(){
     const search = useLocation().search;
     const id: any = new URLSearchParams(search).get('id');
 
-    const [registerOpen, setRegisterOpen] = useState(false);
     const [data, setData] = useState(['']);
+    const [modalPhoto, setModalPhoto] = useState(false);
+    const [modalPhotoUpdate, setModalPhotoUpdate] = useState(false);
 
     const { register, handleSubmit } = useForm();
 
@@ -34,6 +35,27 @@ export default function ProfileView(){
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    function handleOpenModal(){
+        setModalPhoto(true);
+
+    }
+
+    function handleCloseModal(){
+        setModalPhoto(false);
+    }
+
+    function handleOpenModalUpdate(){
+        setModalPhotoUpdate(true);
+
+    }
+
+    function handleCloseModalUpdate(){
+        setModalPhotoUpdate(false);
+    }
+
+    function reload(){
+        setTimeout(()=>{window.location.reload()}, 3000 );
+    }
 
     const onSubmitPhotoUpdate = async (data: any) => {
         const formData = new FormData();
@@ -46,6 +68,7 @@ export default function ProfileView(){
 
             await updatePhoto(formData);
 
+            reload();
         } catch (error) {
             return error;
         }
@@ -64,10 +87,28 @@ export default function ProfileView(){
 
             await updateUser(formData);
 
+            reload();
         } catch (error) {
             return error;
         }
     };
+
+    const onSubmitSavePhoto = async (data: any) => {
+        const formData = new FormData();
+
+        formData.append("file", data.file[0]);
+        formData.append("user_id", id);
+
+        try {
+            console.log(formData);
+
+            await savePhoto(formData);
+
+            reload();
+        } catch (error) {
+            return error;
+        }
+    };  
 
 
 
@@ -76,29 +117,66 @@ export default function ProfileView(){
     const imageUser = response.photo;
 
 
+
+    
+
+    function photoUser(){
+        if(imageUser == null){
+            return(
+                <>
+                    <Title>Adicionar Foto</Title>
+                    <button onClick={()=>handleOpenModal()}>+</button>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <Photo src={imageUser.photo} />
+                    <button onClick={()=>{handleOpenModalUpdate();}}>Editar foto</button>
+                </>
+            )
+        }
+    }
+
+
     return(
         <Container>
             <MenuComponent/>
 
             <ContainerData>
                 <Title>Perfil de {response.name}</Title>
-                <Photo src={imageUser} />
 
-                <Form onSubmit={handleSubmit(onSubmitPhotoUpdate)}>
-                    <input type="file" {...register("file")}/>
+                {photoUser()}
+                
+                
+                <Divisoria/>
 
-                    <button type="submit">Atualizar foto</button>
-                </Form>
+                <Title>Atualizar dados</Title>
 
                 <Form onSubmit={handleSubmit(onSubmitUpdateUser)}>
                     <input type="text" defaultValue={response.name} {...register("name")}/>
                     <input type="email" defaultValue={response.email} {...register("email")}/>
                     <input type="text" defaultValue={response.mobile_phone} {...register("mobile_phone")}/>
 
-                    <button type='submit'> Editar</button>
+                    <button type='submit'>Editar</button>
                 </Form>
 
             </ContainerData>
+
+            <Modal isOpen={modalPhoto} onRequestClose={handleCloseModal}>
+                <Form onSubmit={handleSubmit(onSubmitSavePhoto)}>
+                    <input type="file" {...register("file")}/>
+                    <button type='submit'> Editar</button>
+                </Form>
+            </Modal>
+
+            <Modal isOpen={modalPhotoUpdate} onRequestClose={handleCloseModalUpdate}>
+                <Form onSubmit={handleSubmit(onSubmitPhotoUpdate)}>
+                    <input type="file" {...register("file")}/>
+
+                    <button type="submit">Atualizar foto</button>
+                </Form>
+            </Modal>
         </Container>
     )
 }
