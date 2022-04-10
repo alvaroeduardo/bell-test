@@ -6,7 +6,8 @@ import {
     Container,
     Form,
     Title,
-    Description
+    Description,
+    Button
 } from './style';
 
 import { useAuth } from "../../Context/AuthProvider/useAuth";
@@ -31,15 +32,15 @@ export default function LoginPage(){
     return(
         <Container>
             <Form onSubmit={handleSubmit(onSubmit)}>
-                <Title>Entrar</Title>
+                <Title>BellTest</Title>
 
                 <Description>Insira seu e-mail: </Description>
                 <input type="email" {...register("email")} placeholder="Insira seu e-mail"/>
 
                 <Description>Insira sua senha: </Description>
-                <input type="password" {...register("password")} placeholder="Insira seu e-mail"/>
+                <input type="password" {...register("password")} placeholder="Insira sua senha"/>
 
-                <button type="submit" >Entrar</button>
+                <Button type="submit" >Entrar</Button>
             </Form>
         </Container>
     )

@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 
 import MenuComponent from '../../Components/Menu';
 import { updatePhoto, getOneUserView, updateUser, savePhoto } from '../../Context/AuthProvider/util';
-import { Container, ContainerData, Divisoria, Form, Photo, Title } from './style';
+import { Container, ContainerData, DataContainer, Divisoria, Form, Photo, PhotoContainer, Title } from './style';
 import { useForm } from "react-hook-form";
 
 
@@ -141,22 +141,23 @@ export default function ProfileView(){
             <MenuComponent/>
 
             <ContainerData>
-                <Title>Perfil de {response.name}</Title>
-
-                {photoUser()}
+                <PhotoContainer>
+                    {photoUser()}
+                </PhotoContainer>
                 
-                
-                <Divisoria/>
+                <DataContainer>
 
-                <Title>Atualizar dados</Title>
+                    <Title>Atualizar dados</Title>
 
-                <Form onSubmit={handleSubmit(onSubmitUpdateUser)}>
-                    <input type="text" defaultValue={response.name} {...register("name")}/>
-                    <input type="email" defaultValue={response.email} {...register("email")}/>
-                    <input type="text" defaultValue={response.mobile_phone} {...register("mobile_phone")}/>
+                    <Form onSubmit={handleSubmit(onSubmitUpdateUser)}>
+                        <input type="text" defaultValue={response.name} {...register("name")}/>
+                        <input type="email" defaultValue={response.email} {...register("email")}/>
+                        <input type="text" defaultValue={response.mobile_phone} {...register("mobile_phone")}/>
 
-                    <button type='submit'>Editar</button>
-                </Form>
+                        <button type='submit'>Editar</button>
+                    </Form>
+
+                </DataContainer>
 
             </ContainerData>
 
